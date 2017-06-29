@@ -202,8 +202,7 @@ void pair_N( FILE *fp2 ){
 				pai[i] = word2[m];
 				i++
 			}
-		}
-		
+		}	
 	}
 }*/
 int main(void)
