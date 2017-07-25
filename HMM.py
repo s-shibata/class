@@ -16,7 +16,6 @@ class HMM:
         self.vase3 = Vase3
     def Vase(self):
         par_ball = []
-        #g = []
         enu_ball = []
         #壺の数
         j = 3
@@ -30,13 +29,7 @@ class HMM:
             g = (R * self.r) + (B * self.b) + (Y * self.y)
             gg = str(self.r) + str (self.b) + str(self.y)
             enu_ball.append(g)
-            #print(gg)
             par_ball.append(gg)
-        #print(f[0])
-        #print(d[0])
-        #self.vase1 = ["r","r","r","r","r","r","b","b","b","y"]
-        #self.vase2 = ["b","b","b","b","b","b","y","y","y","r"]
-        #self.vase3 = ["y","y","y","y","y","y","r","r","r","b"]
         return enu_ball,par_ball
     def Select(self,select_ball):
         x = random.randint(3,7)
@@ -76,45 +69,133 @@ class HMM:
             f.write(str(prob))
             f.write("\n")
     def read(self):
-
+        path_1 = []
         with open('HMM.txt') as f:
-            #reader = csv.reader(f,delimiter = '\n')
-            line = f.readline()
-            for line1 in line:
-                line2.append(line1)
-                #self.ex2 = list(map(int,line2[0:-1]))
-            print(line2)
-        #return ex2
-
-        #a = 1
-        #print(int(ex2[0]) + a)
-
-    #RBBのとき
+            for path in f:
+                path_1.append(path)
+            vase_1_1 =path_1[0][2]+ path_1[0][3] + path_1[0][4]
+            vase_1_2 =path_1[0][9]+ path_1[0][10] + path_1[0][11]
+            vase_1_3 =path_1[0][16]+ path_1[0][17] + path_1[0][18]
+            vase_2_1 =path_1[3][2]+ path_1[3][3] + path_1[3][4]
+            vase_2_2 =path_1[3][9]+ path_1[3][10] + path_1[3][11]
+            vase_2_3 =path_1[3][16]+ path_1[3][17] + path_1[3][18]
+            vase_3_1 =path_1[6][2]+ path_1[6][3] + path_1[6][4]
+            vase_3_2 =path_1[6][9]+ path_1[6][10] + path_1[6][11]
+            vase_3_3 =path_1[6][16]+ path_1[6][17] + path_1[6][18]
+            staypar_1 = path_1[1][0] + path_1[1][1] + path_1[1][2]
+            staypar_2 = path_1[4][0] + path_1[4][1] + path_1[4][2]
+            staypar_3 = path_1[7][0] + path_1[7][1] + path_1[7][2]
+            self.r1_1par = int(vase_1_1[0])/10
+            self.b1_1par = int(vase_1_1[1])/10
+            self.y1_1par = int(vase_1_1[2])/10
+            self.r1_2par = int(vase_1_2[0])/10
+            self.b1_2par = int(vase_1_2[1])/10
+            self.y1_2par = int(vase_1_2[2])/10
+            self.r1_3par = int(vase_1_3[0])/10
+            self.b1_3par = int(vase_1_3[1])/10
+            self.y1_3par = int(vase_1_3[2])/10
+            self.r2_1par = int(vase_2_1[0])/10
+            self.b2_1par = int(vase_2_1[1])/10
+            self.y2_1par = int(vase_2_1[2])/10
+            self.r2_2par = int(vase_2_2[0])/10
+            self.b2_2par = int(vase_2_2[1])/10
+            self.y2_2par = int(vase_2_2[2])/10
+            self.r2_3par = int(vase_2_3[0])/10
+            self.b2_3par = int(vase_2_3[1])/10
+            self.y2_3par = int(vase_2_3[2])/10
+            self.r3_1par = int(vase_3_1[0])/10
+            self.b3_1par = int(vase_3_1[1])/10
+            self.y3_1par = int(vase_3_1[2])/10
+            self.r3_2par = int(vase_3_2[0])/10
+            self.b3_2par = int(vase_3_2[1])/10
+            self.y3_2par = int(vase_3_2[2])/10
+            self.r3_3par = int(vase_3_3[0])/10
+            self.b3_3par = int(vase_3_3[1])/10
+            self.y3_3par = int(vase_3_3[2])/10
+            self.staypar1_1 = int(staypar_1[0])/10
+            self.staypar1_2 = int(staypar_1[1])/10
+            self.staypar1_3 = int(staypar_1[2])/10
+            self.staypar2_1 = int(staypar_2[0])/10
+            self.staypar2_2 = int(staypar_2[1])/10
+            self.staypar2_3 = int(staypar_2[2])/10
+            self.staypar3_1 = int(staypar_3[0])/10
+            self.staypar3_2 = int(staypar_3[1])/10
+            self.staypar3_3 = int(staypar_3[2])/10
     def calc(self):
-        x = self.r + int(self.ex2[0])
-        print(self.r,x)
-
-
+        A1 = [[self.staypar1_1,1 - self.staypar1_1],
+              [self.staypar1_2,1 - self.staypar1_2],
+              [self.staypar1_3,1 - self.staypar1_3]]
+        A2 = [[self.staypar2_1,1 - self.staypar2_1],
+              [self.staypar2_2,1 - self.staypar2_2],
+              [self.staypar2_3,1 - self.staypar2_3]]
+        A3 = [[self.staypar3_1,1 - self.staypar3_1],
+              [self.staypar3_2,1 - self.staypar3_2],
+              [self.staypar3_3,1 - self.staypar3_3]]
+        B1 = [[{'R':self.r1_1par,'B':self.b1_1par,'Y':self.y1_1par}],
+              [{'R':self.r1_2par,'B':self.b1_2par,'Y':self.y1_2par}],
+              [{'R':self.r1_3par,'B':self.b1_3par,'Y':self.y1_3par}]]
+        B2 = [[{'R':self.r2_1par,'B':self.b2_1par,'Y':self.y2_1par}],
+              [{'R':self.r2_2par,'B':self.b2_2par,'Y':self.y2_2par}],
+              [{'R':self.r2_3par,'B':self.b2_3par,'Y':self.y2_3par}]]
+        B3 = [[{'R':self.r3_1par,'B':self.b3_1par,'Y':self.y3_1par}],
+              [{'R':self.r3_2par,'B':self.b3_2par,'Y':self.y3_2par}],
+              [{'R':self.r3_3par,'B':self.b3_3par,'Y':self.y3_3par}]]
+        row = len(pattern) - 2
+        col = len(pattern)-1                 #要素数
+        alpha = [[0 for s in range(row)] for t in range(col)]
+        calcspace = [0,0]
+        alpha[0][0] = B1[0][0][pattern[0]]
+        for i in range(1,row):
+            alpha[0][i] = alpha[0][i-1] * A1[0][0] * B1[0][0][pattern[i]]
+        for j in range(1,col):
+            alpha[j][0] = alpha[j-1][0] * A1[j-1][1] * B1[j][0][pattern[j]]
+        for i in range(1,row):
+            for j in range(1,col):
+                calcspace[0] = alpha[j-1][i] * A1[j-1][1] * B1[j][0][pattern[j+1]]
+                calcspace[1] = alpha[j][i-1] * A1[j][0] * B1[j][0][pattern[j+1]]
+                alpha[j][i] = sum(calcspace)
+        result1 = alpha[j][i] * A1[2][1]
+        print(result1*100)
+        alpha = [[0 for s in range(row)] for t in range(col)]
+        calcspace = [0,0]
+        alpha[0][0] = B2[0][0][pattern[0]]
+        for i in range(1,row):
+            alpha[0][i] = alpha[0][i-1] * A2[0][0] * B2[0][0][pattern[i]]
+        for j in range(1,col):
+            alpha[j][0] = alpha[j-1][0] * A2[j-1][1] * B2[j][0][pattern[j]]
+        for i in range(1,row):
+            for j in range(1,col):
+                calcspace[0] = alpha[j-1][i] * A2[j-1][1] * B2[j][0][pattern[j+1]]
+                calcspace[1] = alpha[j][i-1] * A2[j][0] * B2[j][0][pattern[j+1]]
+                alpha[j][i] = sum(calcspace)
+        result2 = alpha[j][i] * A2[2][1]
+        print(result2 *100)
+        alpha = [[0 for s in range(row)] for t in range(col)]
+        calcspace = [0,0]
+        alpha[0][0] = B3[0][0][pattern[0]]
+        for i in range(1,row):
+            alpha[0][i] = alpha[0][i-1] * A3[0][0] * B3[0][0][pattern[i]]
+        for j in range(1,col):
+            alpha[j][0] = alpha[j-1][0] * A3[j-1][1] * B3[j][0][pattern[j]]
+        for i in range(1,row):
+            for j in range(1,col):
+                calcspace[0] = alpha[j-1][i] * A3[j-1][1] * B3[j][0][pattern[j+1]]
+                calcspace[1] = alpha[j][i-1] * A3[j][0] * B3[j][0][pattern[j+1]]
+                alpha[j][i] = sum(calcspace)
+        result3 = alpha[j][i] * A3[2][1]
+        print(result3 * 100)
 vase_A = [10]
 vase_B = [10]
+
 vase_C = [10]
 h = HMM(vase_A,vase_B,vase_C)
 vase_all,par_Ball = h.Vase()
-#print(par_Ball)
-#print(vase_all)
-
 ball = []
 s_par = []
 select_ball,par = h.Select(vase_all[0])
 select_ball,par = h.Select(vase_all[1])
 select_ball,par = h.Select(vase_all[2])
-#print(par)
-#print(select_ball)
-#h.write(par_Ball,par,select_ball)
-#h.add(par_Ball,par,select_ball)
 line2 = []
-
 h.read()
-#h.calc()
-#print(select_ball)
-#print(par)
+pattern = ['B','B','R','Y']
+h.calc()
