@@ -1,0 +1,65 @@
+% ---------------------------------------------------------------------------------------------------------------
+% Name:         main.tex
+% Author:    　　shibata seiya , Yusuke Kato , Atsushi Kuwagata , Takumi Shimada
+% Created:     	Nov 26, 2019
+% Last Date:   	Dec  15, 2019
+% Note:        Advanced robot design and production's group report
+% -------------------------------------------------------------------------------------------------------------
+
+\documentclass[11pt,a4paper]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{graphicx}
+\usepackage{ascmac}
+%
+\setlength{\textwidth}{\fullwidth}
+\setlength{\textheight}{40\baselineskip}
+\addtolength{\textheight}{\topskip}
+\setlength{\voffset}{-0.2in}
+\setlength{\topmargin}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{0pt}
+
+\makeatletter
+\def\@maketitle{% 
+\begin{center}% 
+{\LARGE \@title \par}% タイトル 
+\end{center}% 
+\begin{flushright}% 
+{\large \@date}% 日付 
+\end{flushright}% 
+\begin{flushright}% 
+{\large \@author}% 著者 
+\end{flushright}% 
+\par\vskip 1.5em
+}
+%
+%\newcommand{\divergence}{\mathrm{div}\,}  %ダイバージェンス
+%\newcommand{\grad}{\mathrm{grad}\,}  %グラディエント
+%\newcommand{\rot}{\mathrm{rot}\,}  %ローテーション
+%
+\title{2019年度ロボット設計製作特論\\発表後グループレポート\\
+\LARGE  発表タイトル：ハンコを押すロボット}
+%\leftline{加藤祐介　鍬形篤史　柴田生弥　島田拓海}
+\author{1976007	加藤祐介　1976010	鍬形篤史\\1976016	柴田生弥　1976019	島田拓海}
+
+\date{提出日\today}
+\begin{document}
+\maketitle
+%
+%
+\input{src/01_overview.tex}
+\input{src/02_background.tex}
+\input{src/03_aim.tex}
+\input{src/04_division.tex}
+\input{src/05_method.tex}
+\input{src/06_constitution.tex}
+\input{src/07_result}
+\input{src/08_activity_record.tex}
+\input{src/09_activity_expenditure.tex}
+
+
+%
+%
+\end{document}
